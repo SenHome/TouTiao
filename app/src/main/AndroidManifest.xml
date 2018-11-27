@@ -108,6 +108,18 @@
             android:label="@string/title_wenda_detail"
             android:theme="@style/AppTheme.NoActionBar.Slidable"/>
 
+
+        <activity
+            android:name=".module.video.content.VideoContentActivity"
+            android:configChanges="orientation|screenSize|uiMode"
+            android:label="@string/title_video_content"
+            android:theme="@style/AppTheme.NoActionBar.Slidable"/>
+
+
+        <activity
+            android:name=".module.media.home.MediaHomeActivity"
+            android:configChanges="orientation|screenSize|uiMode"
+            android:theme="@style/AppTheme.NoActionBar.Slidable"/>
     </application>
 
 </manifest>

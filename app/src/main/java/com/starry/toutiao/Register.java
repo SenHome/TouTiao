@@ -4,12 +4,20 @@ import android.support.annotation.NonNull;
 
 import com.starry.toutiao.bean.LoadingBean;
 import com.starry.toutiao.bean.LoadingEndBean;
+import com.starry.toutiao.bean.media.MediaProfileBean;
+import com.starry.toutiao.bean.media.MediaWendaBean;
+import com.starry.toutiao.bean.media.MultiMediaArticleBean;
 import com.starry.toutiao.bean.news.MultiNewsArticleDataBean;
 import com.starry.toutiao.bean.news.NewsCommentBean;
 import com.starry.toutiao.bean.wenda.WendaArticleDataBean;
 import com.starry.toutiao.bean.wenda.WendaContentBean;
 import com.starry.toutiao.binder.LoadingEndViewBinder;
 import com.starry.toutiao.binder.LoadingViewBinder;
+import com.starry.toutiao.binder.media.MediaArticleHeaderViewBinder;
+import com.starry.toutiao.binder.media.MediaArticleImgViewBinder;
+import com.starry.toutiao.binder.media.MediaArticleTextViewBinder;
+import com.starry.toutiao.binder.media.MediaArticleVideoViewBinder;
+import com.starry.toutiao.binder.media.MediaWendaViewBinder;
 import com.starry.toutiao.binder.news.NewsArticleImgViewBinder;
 import com.starry.toutiao.binder.news.NewsArticleTextViewBinder;
 import com.starry.toutiao.binder.news.NewsArticleVideoViewBinder;
@@ -93,6 +101,31 @@ public class Register {
     public static void registerWendaContentItem(@NonNull MultiTypeAdapter adapter) {
         adapter.register(WendaContentBean.QuestionBean.class, new WendaContentHeaderViewBinder());
         adapter.register(WendaContentBean.AnsListBean.class, new WendaContentViewBinder());
+        adapter.register(LoadingBean.class, new LoadingViewBinder());
+        adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
+    }
+
+    public static void registerMediaArticleItem(@NonNull MultiTypeAdapter adapter) {
+        adapter.register(MultiMediaArticleBean.DataBean.class)
+                .to(new MediaArticleImgViewBinder(),
+                        new MediaArticleVideoViewBinder(),
+                        new MediaArticleTextViewBinder())
+                .withClassLinker((position, item) -> {
+                    if (item.isHas_video()) {
+                        return MediaArticleVideoViewBinder.class;
+                    }
+                    if (null != item.getImage_list() && item.getImage_list().size() > 0) {
+                        return MediaArticleImgViewBinder.class;
+                    }
+                    return MediaArticleTextViewBinder.class;
+                });
+        adapter.register(MediaProfileBean.DataBean.class, new MediaArticleHeaderViewBinder());
+        adapter.register(LoadingBean.class, new LoadingViewBinder());
+        adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
+    }
+
+    public static void registerMediaWendaItem(@NonNull MultiTypeAdapter adapter) {
+        adapter.register(MediaWendaBean.AnswerQuestionBean.class, new MediaWendaViewBinder());
         adapter.register(LoadingBean.class, new LoadingViewBinder());
         adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
     }

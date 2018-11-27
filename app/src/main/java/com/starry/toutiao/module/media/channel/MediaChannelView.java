@@ -1,4 +1,4 @@
-package com.starry.toutiao.module.media;
+package com.starry.toutiao.module.media.channel;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

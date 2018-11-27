@@ -13,13 +13,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.starry.toutiao.ErrorAction;
 import com.starry.toutiao.IntentAction;
 import com.starry.toutiao.R;
 import com.starry.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.starry.toutiao.module.media.home.MediaHomeActivity;
 import com.starry.toutiao.utils.ImageLoader;
 import com.starry.toutiao.weight.CircleImageView;
 
+
+import java.util.concurrent.TimeUnit;
 
 import me.drakeet.multitype.ItemViewBinder;
 
@@ -107,9 +111,9 @@ public class VideoContentHeaderViewBinder extends ItemViewBinder<MultiNewsArticl
                 // TODO 下载视频
             });
 
-//            RxView.clicks(holder.media_layout)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> MediaHomeActivity.launch(media_id));
+            RxView.clicks(holder.media_layout)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o -> MediaHomeActivity.launch(media_id));
         } catch (Exception e) {
             ErrorAction.print(e);
         }

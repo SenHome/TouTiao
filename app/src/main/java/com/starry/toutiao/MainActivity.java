@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.starry.toutiao.module.base.BaseActivity;
-import com.starry.toutiao.module.media.MediaChannelView;
+import com.starry.toutiao.module.media.channel.MediaChannelView;
 import com.starry.toutiao.module.news.NewsTabLayout;
 import com.starry.toutiao.module.photo.PhotoTabLayout;
 import com.starry.toutiao.module.video.VideoTabLayout;

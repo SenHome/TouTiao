@@ -17,6 +17,7 @@ import com.starry.toutiao.ErrorAction;
 import com.starry.toutiao.IntentAction;
 import com.starry.toutiao.R;
 import com.starry.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.starry.toutiao.module.video.content.VideoContentActivity;
 import com.starry.toutiao.utils.ImageLoader;
 import com.starry.toutiao.utils.SettingUtil;
 import com.starry.toutiao.utils.TimeUtil;
@@ -98,9 +99,9 @@ public class NewsArticleVideoViewBinder extends ItemViewBinder<MultiNewsArticleD
                 popupMenu.show();
             });
 
-//            RxView.clicks(holder.itemView)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> VideoContentActivity.launch(item));
+            RxView.clicks(holder.itemView)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o -> VideoContentActivity.launch(item));
         } catch (Exception e) {
             ErrorAction.print(e);
         }
