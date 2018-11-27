@@ -120,6 +120,18 @@
             android:name=".module.media.home.MediaHomeActivity"
             android:configChanges="orientation|screenSize|uiMode"
             android:theme="@style/AppTheme.NoActionBar.Slidable"/>
+
+        <activity
+            android:name=".setting.SettingActivity"
+            android:configChanges="orientation|screenSize|uiMode"
+            android:label="@string/title_settings"
+            android:theme="@style/AppTheme.NoActionBar.Slidable">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

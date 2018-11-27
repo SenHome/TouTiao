@@ -1,5 +1,6 @@
 package com.starry.toutiao;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.starry.toutiao.module.media.channel.MediaChannelView;
 import com.starry.toutiao.module.news.NewsTabLayout;
 import com.starry.toutiao.module.photo.PhotoTabLayout;
 import com.starry.toutiao.module.video.VideoTabLayout;
+import com.starry.toutiao.setting.SettingActivity;
 import com.starry.toutiao.utils.SettingUtil;
 import com.starry.toutiao.weight.helper.BottomNavigationViewHelper;
 
@@ -274,9 +276,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == R.id.action_search) {
+        if (item.getItemId() == R.id.action_search) {
 //            startActivity(new Intent(MainActivity.this, SearchActivity.class));
-//        }
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -302,7 +304,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 return false;
 
             case R.id.nav_setting:
-//                startActivity(new Intent(this, SettingActivity.class));
+                startActivity(new Intent(this, SettingActivity.class));
                 drawer_layout.closeDrawers();
                 return false;
 
