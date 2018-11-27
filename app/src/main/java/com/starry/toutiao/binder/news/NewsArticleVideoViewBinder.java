@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.starry.toutiao.ErrorAction;
 import com.starry.toutiao.IntentAction;
 import com.starry.toutiao.R;
@@ -20,6 +21,8 @@ import com.starry.toutiao.utils.ImageLoader;
 import com.starry.toutiao.utils.SettingUtil;
 import com.starry.toutiao.utils.TimeUtil;
 import com.starry.toutiao.weight.CircleImageView;
+
+import java.util.concurrent.TimeUnit;
 
 import me.drakeet.multitype.ItemViewBinder;
 

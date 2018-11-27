@@ -12,14 +12,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.starry.toutiao.ErrorAction;
 import com.starry.toutiao.IntentAction;
 import com.starry.toutiao.R;
 import com.starry.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.starry.toutiao.module.news.content.NewsContentActivity;
 import com.starry.toutiao.utils.ImageLoader;
 import com.starry.toutiao.utils.SettingUtil;
 import com.starry.toutiao.utils.TimeUtil;
 import com.starry.toutiao.weight.CircleImageView;
+
+import java.util.concurrent.TimeUnit;
 
 import me.drakeet.multitype.ItemViewBinder;
 
@@ -79,9 +83,9 @@ public class NewsArticleTextViewBinder extends ItemViewBinder<MultiNewsArticleDa
                 popupMenu.show();
             });
 
-//            RxView.clicks(holder.itemView)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> NewsContentActivity.launch(item));
+            RxView.clicks(holder.itemView)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o -> NewsContentActivity.launch(item));
         } catch (Exception e) {
             ErrorAction.print(e);
         }

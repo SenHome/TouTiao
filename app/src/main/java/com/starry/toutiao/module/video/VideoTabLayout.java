@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.starry.toutiao.InitApp;
 import com.starry.toutiao.R;
 import com.starry.toutiao.adapter.BasePagerAdapter;
 import com.starry.toutiao.module.base.BaseListFragment;
+import com.starry.toutiao.module.video.article.VideoArticleView;
 import com.starry.toutiao.utils.SettingUtil;
 
 import java.util.ArrayList;
@@ -24,9 +26,9 @@ import java.util.List;
 public class VideoTabLayout extends Fragment {
 
     private static VideoTabLayout instance = null;
-//    private static int pageSize = InitApp.AppContext.getResources().getStringArray(R.array.mobile_video_id).length;
-//    private String categoryId[] = InitApp.AppContext.getResources().getStringArray(R.array.mobile_video_id);
-//    private String categoryName[] = InitApp.AppContext.getResources().getStringArray(R.array.mobile_video_name);
+    private static int pageSize = InitApp.AppContext.getResources().getStringArray(R.array.mobile_video_id).length;
+    private String categoryId[] = InitApp.AppContext.getResources().getStringArray(R.array.mobile_video_id);
+    private String categoryName[] = InitApp.AppContext.getResources().getStringArray(R.array.mobile_video_name);
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private List<Fragment> fragmentList = new ArrayList<>();
@@ -61,16 +63,16 @@ public class VideoTabLayout extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setBackgroundColor(SettingUtil.getInstance().getColor());
-//        viewPager.setOffscreenPageLimit(pageSize);
+        viewPager.setOffscreenPageLimit(pageSize);
     }
 
     private void initData() {
-//        for (int i = 0; i < categoryId.length; i++) {
-//            Fragment fragment = VideoArticleView.newInstance(categoryId[i]);
-//            fragmentList.add(fragment);
-//        }
-//        adapter = new BasePagerAdapter(getChildFragmentManager(), fragmentList, categoryName);
-//        viewPager.setAdapter(adapter);
+        for (int i = 0; i < categoryId.length; i++) {
+            Fragment fragment = VideoArticleView.newInstance(categoryId[i]);
+            fragmentList.add(fragment);
+        }
+        adapter = new BasePagerAdapter(getChildFragmentManager(), fragmentList, categoryName);
+        viewPager.setAdapter(adapter);
     }
 
     public void onDoubleClick() {

@@ -1,0 +1,24 @@
+[33mcommit e9e3ec9e4515e9126c12d06c98536c9e25064a38[m
+Merge: fe316bf 000b60a
+Author: wangsen <18713177522@163.com>
+Date:   Tue Nov 27 15:31:53 2018 +0800
+
+    四个TabLayout，新闻页面可以浏览
+
+[33mcommit fe316bfedfa2923b3fdb068146a180e59e0b7ae5[m
+Author: wangsen <18713177522@163.com>
+Date:   Wed Nov 21 19:33:57 2018 +0800
+
+    第一次远程提交
+
+[33mcommit 797da04c862f3ac952d36574fe9b32c79077978c[m
+Author: wangsen <18713177522@163.com>
+Date:   Wed Nov 21 19:28:57 2018 +0800
+
+    首次提交
+
+[33mcommit 000b60a8f8707e16e9b8d7f786e50c90e1bb11b9[m
+Author: SenHome <18713177522@163.com>
+Date:   Wed Nov 21 15:41:14 2018 +0800
+
+    Initial commit

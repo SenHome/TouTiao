@@ -14,6 +14,7 @@ import com.starry.toutiao.binder.news.NewsArticleImgViewBinder;
 import com.starry.toutiao.binder.news.NewsArticleTextViewBinder;
 import com.starry.toutiao.binder.news.NewsArticleVideoViewBinder;
 import com.starry.toutiao.binder.news.NewsCommentViewBinder;
+import com.starry.toutiao.binder.video.VideoContentHeaderViewBinder;
 import com.starry.toutiao.binder.wenda.WendaArticleOneImgViewBinder;
 import com.starry.toutiao.binder.wenda.WendaArticleTextViewBinder;
 import com.starry.toutiao.binder.wenda.WendaArticleThreeImgViewBinder;
@@ -72,6 +73,19 @@ public class Register {
                     }
                     return WendaArticleTextViewBinder.class;
                 });
+        adapter.register(LoadingBean.class, new LoadingViewBinder());
+        adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
+    }
+
+    public static void registerVideoContentItem(@NonNull MultiTypeAdapter adapter) {
+        adapter.register(MultiNewsArticleDataBean.class, new VideoContentHeaderViewBinder());
+        adapter.register(NewsCommentBean.DataBean.CommentBean.class, new NewsCommentViewBinder());
+        adapter.register(LoadingBean.class, new LoadingViewBinder());
+        adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
+    }
+
+    public static void registerVideoArticleItem(@NonNull MultiTypeAdapter adapter) {
+        adapter.register(MultiNewsArticleDataBean.class, new NewsArticleVideoViewBinder());
         adapter.register(LoadingBean.class, new LoadingViewBinder());
         adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
     }
