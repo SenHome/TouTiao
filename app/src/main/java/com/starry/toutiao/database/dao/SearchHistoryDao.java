@@ -4,9 +4,13 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.starry.toutiao.bean.search.SearchHistoryBean;
 import com.starry.toutiao.database.DatabaseHelper;
 import com.starry.toutiao.database.table.SearchHistoryTable;
 import com.starry.toutiao.utils.TimeUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,18 +33,18 @@ public class SearchHistoryDao {
         return result != -1;
     }
 
-//    public List<SearchHistoryBean> queryAll() {
-//        Cursor cursor = db.query(SearchHistoryTable.TABLENAME, null, null, null, null, null, SearchHistoryTable.TIME + " desc");
-//        List<SearchHistoryBean> list = new ArrayList<>();
-//        while (cursor.moveToNext()) {
-//            SearchHistoryBean bean = new SearchHistoryBean();
-//            bean.setKeyWord(cursor.getString(SearchHistoryTable.ID_KEYWORD));
-//            bean.setTime(cursor.getString(SearchHistoryTable.ID_TIME));
-//            list.add(bean);
-//        }
-//        cursor.close();
-//        return list;
-//    }
+    public List<SearchHistoryBean> queryAll() {
+        Cursor cursor = db.query(SearchHistoryTable.TABLENAME, null, null, null, null, null, SearchHistoryTable.TIME + " desc");
+        List<SearchHistoryBean> list = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            SearchHistoryBean bean = new SearchHistoryBean();
+            bean.setKeyWord(cursor.getString(SearchHistoryTable.ID_KEYWORD));
+            bean.setTime(cursor.getString(SearchHistoryTable.ID_TIME));
+            list.add(bean);
+        }
+        cursor.close();
+        return list;
+    }
 
     public boolean queryisExist(String keyWord) {
         Cursor cursor = db.query(SearchHistoryTable.TABLENAME, null, SearchHistoryTable.KEYWORD + "=?", new String[]{keyWord}, null, null, null);

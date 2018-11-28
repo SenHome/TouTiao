@@ -23,6 +23,7 @@ import com.starry.toutiao.module.base.BaseActivity;
 import com.starry.toutiao.module.media.channel.MediaChannelView;
 import com.starry.toutiao.module.news.NewsTabLayout;
 import com.starry.toutiao.module.photo.PhotoTabLayout;
+import com.starry.toutiao.module.search.SearchActivity;
 import com.starry.toutiao.module.video.VideoTabLayout;
 import com.starry.toutiao.setting.SettingActivity;
 import com.starry.toutiao.utils.SettingUtil;
@@ -277,7 +278,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_search) {
-//            startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            startActivity(new Intent(MainActivity.this, SearchActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

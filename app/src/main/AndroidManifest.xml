@@ -132,6 +132,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".module.search.SearchActivity"
+            android:configChanges="orientation|screenSize|uiMode"
+            android:theme="@style/AppTheme.NoActionBar.Slidable"/>
+
+
+
+
+
     </application>
 
 </manifest>

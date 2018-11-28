@@ -22,6 +22,7 @@ import com.starry.toutiao.binder.news.NewsArticleImgViewBinder;
 import com.starry.toutiao.binder.news.NewsArticleTextViewBinder;
 import com.starry.toutiao.binder.news.NewsArticleVideoViewBinder;
 import com.starry.toutiao.binder.news.NewsCommentViewBinder;
+import com.starry.toutiao.binder.search.SearchArticleVideoViewBinder;
 import com.starry.toutiao.binder.video.VideoContentHeaderViewBinder;
 import com.starry.toutiao.binder.wenda.WendaArticleOneImgViewBinder;
 import com.starry.toutiao.binder.wenda.WendaArticleTextViewBinder;
@@ -126,6 +127,25 @@ public class Register {
 
     public static void registerMediaWendaItem(@NonNull MultiTypeAdapter adapter) {
         adapter.register(MediaWendaBean.AnswerQuestionBean.class, new MediaWendaViewBinder());
+        adapter.register(LoadingBean.class, new LoadingViewBinder());
+        adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
+    }
+
+
+    public static void registerSearchItem(@NonNull MultiTypeAdapter adapter) {
+        adapter.register(MultiNewsArticleDataBean.class)
+                .to(new NewsArticleImgViewBinder(),
+                        new SearchArticleVideoViewBinder(),
+                        new NewsArticleTextViewBinder())
+                .withClassLinker((position, item) -> {
+                    if (item.isHas_video()) {
+                        return SearchArticleVideoViewBinder.class;
+                    }
+                    if (null != item.getImage_list() && item.getImage_list().size() > 0) {
+                        return NewsArticleImgViewBinder.class;
+                    }
+                    return NewsArticleTextViewBinder.class;
+                });
         adapter.register(LoadingBean.class, new LoadingViewBinder());
         adapter.register(LoadingEndBean.class, new LoadingEndViewBinder());
     }
