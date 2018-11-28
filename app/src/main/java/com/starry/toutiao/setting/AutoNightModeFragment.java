@@ -1,5 +1,6 @@
 package com.starry.toutiao.setting;
 
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import com.starry.toutiao.R;
 import com.starry.toutiao.utils.SettingUtil;
 
 /**
- * Created by Meiji on 2017/8/5.
+ * 自动切换夜间模式页面
  */
 
 public class AutoNightModeFragment extends PreferenceFragment {
@@ -37,7 +38,7 @@ public class AutoNightModeFragment extends PreferenceFragment {
         setText();
 
         autoNight.setOnPreferenceClickListener(preference -> {
-            TimePickerDialog dialog = new TimePickerDialog(getActivity(),
+                TimePickerDialog dialog = new TimePickerDialog(getActivity(),
                     (timePicker, hour, minute) -> {
                         settingUtil.setNightStartHour(hour > 9 ? "" + hour : "0" + hour);
                         settingUtil.setNightStartMinute(minute > 9 ? "" + minute : "0" + minute);
@@ -49,7 +50,7 @@ public class AutoNightModeFragment extends PreferenceFragment {
             return false;
         });
         autoDay.setOnPreferenceClickListener(preference -> {
-            TimePickerDialog dialog = new TimePickerDialog(getActivity(),
+            TimePickerDialog dialog = new TimePickerDialog(getActivity(),AlertDialog.THEME_HOLO_LIGHT,
                     (timePicker, hour, minute) -> {
                         settingUtil.setDayStartHour(hour > 9 ? "" + hour : "0" + hour);
                         settingUtil.setDayStartMinute(minute > 9 ? "" + minute : "0" + minute);

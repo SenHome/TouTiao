@@ -103,12 +103,12 @@
 
     <!-- About -->
     <string name="changelog">更新日志</string>
-    <string name="changelog_url">https://github.com/iMeiji/Toutiao/releases</string>
+    <string name="changelog_url">https://github.com/SenHome/TouTiao/releases</string>
     <string name="about_developers_label">主要开发者</string>
-    <string name="about_developers">https://github.com/iMeiji</string>
+    <string name="about_developers">https://github.com/SenHome</string>
     <string name="share_app_text">来瞧瞧这个：适配了质感设计的 今日头条！</string>
     <string name="source_code">源代码</string>
-    <string name="source_code_url">https://github.com/iMeiji/Toutiao</string>
+    <string name="source_code_url">https://github.com/SenHome/TouTiao</string>
     <string name="about_libraries_label">开源许可</string>
     <string name="about_libraries_summary">查看开源许可信息</string>
     <string name="copyright">版权声明</string>

@@ -31,7 +31,7 @@ import de.psdev.licensesdialog.model.Notices;
 
 /**
  * Created by Meiji on 2017/8/5.
- * 自动切换夜间模式设置界面
+ * 设置界面
  */
 
 public class GeneralPreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -51,11 +51,13 @@ public class GeneralPreferenceFragment extends PreferenceFragment implements Sha
         setHasOptionsMenu(true);
         setText();
 
+        //自动切换夜间模式
         findPreference("auto_nightMode").setOnPreferenceClickListener(preference -> {
             context.startWithFragment(AutoNightModeFragment.class.getName(), null, null, 0, null);
             return true;
         });
 
+        //字体设置
         findPreference("text_size").setOnPreferenceClickListener(preference -> {
             context.startWithFragment(TextSizeFragment.class.getName(), null, null, 0, null);
             return true;
@@ -77,6 +79,7 @@ public class GeneralPreferenceFragment extends PreferenceFragment implements Sha
             return true;
         });
 
+        //自定义主题颜色弹框
         findPreference("color").setOnPreferenceClickListener(preference -> {
             new ColorChooserDialog.Builder(context, R.string.choose_theme_color)
                     .backButton(R.string.back)
@@ -103,6 +106,7 @@ public class GeneralPreferenceFragment extends PreferenceFragment implements Sha
             return false;
         });
 
+        //清除缓存
         findPreference("clearCache").setOnPreferenceClickListener(preference -> {
             CacheDataManager.clearAllCache(context);
             Snackbar.make(getView(), R.string.clear_cache_successfully, Snackbar.LENGTH_SHORT).show();
@@ -110,6 +114,7 @@ public class GeneralPreferenceFragment extends PreferenceFragment implements Sha
             return false;
         });
 
+        //当前版本
         try {
             String version = "当前版本 " + context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
             findPreference("version").setSummary(version);
@@ -117,21 +122,25 @@ public class GeneralPreferenceFragment extends PreferenceFragment implements Sha
             e.printStackTrace();
         }
 
+        //更新日志
         findPreference("changelog").setOnPreferenceClickListener(preference -> {
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.changelog_url))));
             return false;
         });
 
+        //开元许可
         findPreference("licenses").setOnPreferenceClickListener(preference -> {
             createLicenseDialog();
             return false;
         });
 
+        //源代码
         findPreference("sourceCode").setOnPreferenceClickListener(preference -> {
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.source_code_url))));
             return false;
         });
 
+        //版权声明
         findPreference("copyRight").setOnPreferenceClickListener(preference -> {
             new AlertDialog.Builder(context)
                     .setTitle(R.string.copyright)
@@ -150,6 +159,7 @@ public class GeneralPreferenceFragment extends PreferenceFragment implements Sha
         }
     }
 
+    //开源许可
     private void createLicenseDialog() {
         Notices notices = new Notices();
         notices.addNotice(new Notice("PhotoView", "https://github.com/chrisbanes/PhotoView", "Copyright 2017 Chris Banes", new ApacheSoftwareLicense20()));
