@@ -26,7 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by Meiji on 2017/3/10.
+ * 标签
  */
 
 public class NewsChannelActivity extends BaseActivity {

@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.starry.toutiao.ErrorAction;
 import com.starry.toutiao.R;
 import com.starry.toutiao.bean.wenda.WendaArticleDataBean;
+import com.starry.toutiao.module.wenda.content.WendaContentActivity;
 import com.starry.toutiao.utils.ImageLoader;
 import com.starry.toutiao.utils.SettingUtil;
 import com.starry.toutiao.utils.TimeUtil;
@@ -71,9 +73,9 @@ public class WendaArticleThreeImgViewBinder extends ItemViewBinder<WendaArticleD
             holder.tv_answer_count.setText(tv_answer_count);
             holder.tv_time.setText(tv_datetime);
 
-//            RxView.clicks(holder.itemView)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> WendaContentActivity.launch(item.getQuestionBean().getQid() + ""));
+            RxView.clicks(holder.itemView)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o -> WendaContentActivity.launch(item.getQuestionBean().getQid() + ""));
         } catch (Exception e) {
             ErrorAction.print(e);
         }

@@ -7,12 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.starry.toutiao.ErrorAction;
 import com.starry.toutiao.R;
 import com.starry.toutiao.bean.wenda.WendaContentBean;
+import com.starry.toutiao.module.wenda.detail.WendaDetailActivity;
 import com.starry.toutiao.utils.ImageLoader;
 import com.starry.toutiao.weight.CircleImageView;
 
+
+import java.util.concurrent.TimeUnit;
 
 import me.drakeet.multitype.ItemViewBinder;
 
@@ -40,10 +44,10 @@ public class WendaContentViewBinder extends ItemViewBinder<WendaContentBean.AnsL
             holder.tv_user_name.setText(tv_user_name);
             holder.tv_like_count.setText(tv_like_count);
             holder.tv_abstract.setText(tv_abstract);
-//
-//            RxView.clicks(holder.itemView)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> WendaDetailActivity.launch(item));
+
+            RxView.clicks(holder.itemView)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o -> WendaDetailActivity.launch(item));
         } catch (Exception e) {
             ErrorAction.print(e);
         }

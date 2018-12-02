@@ -8,12 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.starry.toutiao.ErrorAction;
 import com.starry.toutiao.R;
 import com.starry.toutiao.bean.wenda.WendaArticleDataBean;
+import com.starry.toutiao.module.wenda.content.WendaContentActivity;
 import com.starry.toutiao.utils.SettingUtil;
 import com.starry.toutiao.utils.TimeUtil;
 
+
+import java.util.concurrent.TimeUnit;
 
 import me.drakeet.multitype.ItemViewBinder;
 
@@ -45,10 +49,10 @@ public class WendaArticleTextViewBinder extends ItemViewBinder<WendaArticleDataB
             holder.tv_answer_count.setText(tv_answer_count);
             holder.tv_time.setText(tv_datetime);
             holder.tv_content.setText(tv_content);
-//
-//            RxView.clicks(holder.itemView)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> WendaContentActivity.launch(item.getQuestionBean().getQid() + ""));
+
+            RxView.clicks(holder.itemView)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o -> WendaContentActivity.launch(item.getQuestionBean().getQid() + ""));
         } catch (Exception e) {
             ErrorAction.print(e);
         }
